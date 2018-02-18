@@ -32,3 +32,12 @@ Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\P
 Route::resource('frontendprofile/profiles', 'Profile\\ProfilesController');
 Route::get('temp', 'Weather\WeatherController@index');
 
+
+Route::get('get-location-from-ip',function(){
+    $ip= \Request::ip();
+    $ipaddress = $_SERVER['REMOTE_ADDR'];
+   print_r("ADDRESS____".$ipaddress);
+    $data = \Location::get('103.197.221.170');
+    print_r($data);
+    dd($data);
+});

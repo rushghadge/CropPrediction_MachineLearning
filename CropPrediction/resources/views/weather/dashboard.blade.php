@@ -10,7 +10,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-Temp: { { $temp1 } }
+Temp: { { $temp } }
 
                 </div>
             </div>

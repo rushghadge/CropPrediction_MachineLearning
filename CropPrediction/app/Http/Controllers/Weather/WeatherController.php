@@ -49,17 +49,51 @@ $myApiKey ='b664e15807936d8854bdaf1c5f6393a0';
 $owm->setApiKey($myApiKey);
 
 // Example 1: Get current temperature in Berlin.
-$weather = $owm->getWeather('Berlin', $units, $lang);
-echo "EXAMPLE 1$lf";
+$weather = $owm->getWeather('Thane', $units, $lang);
+echo "EXAMPLE 1 Temperature of Thane";
+echo "</br>";
 
-// $weather contains all available weather information for Berlin.
-// Let's get the temperature:
+echo " ".$weather->temperature."  ";
+echo "</br>";
 
-// Returns it as formatted string (using __toString()):
-echo "1".$weather->temperature."1 ";
-echo "---2".$lf."2---";
 echo "hi";
 $temp= $weather->temperature;
+
+
+//$ip= \Request::ip();
+$ip='59.153.121.94';
+
+    //$ipaddress = $_SERVER['REMOTE_ADDR'];
+   print_r("IPADDRESS->".$ip);
+    $data = \Location::get($ip);
+    $arraydata =  (array) $data;
+    echo "</br>";
+
+     print_r($arraydata);
+echo "</br>";
+echo "See YOUR latitude and longitude";
+
+      print_r("Lat".$arraydata["latitude"]);
+      print_r($arraydata["longitude"]);
+
+      $lat='19.169120';
+      $lon='72.966792';
+
+ // $lat=$arraydata["latitude"];
+ //      $lon=$arraydata["longitude"];
+
+// Example 4: Get current temperature from coordinates (Greenland :-) ).
+$weather = $owm->getWeather(array('lat' => $lat, 'lon' => $lon), $units, $lang);
+
+//$weather = $owm->getWeather(array($lat, $lon), $units, $lang);
+echo "$lf$lf EXAMPLE 4$lf";
+
+echo 'Temperature: '.$weather->temperature;
+echo $lf;
+
+
+
+
 //return view('weather.dashboard')->with('temp', $temp);
 return view('weather.dashboard',compact($temp));
 //return view('weather.dashboard',compact($weather));

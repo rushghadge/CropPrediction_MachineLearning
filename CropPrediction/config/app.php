@@ -173,6 +173,8 @@ return [
             // For crud generator & html
             Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
             Collective\Html\HtmlServiceProvider::class,
+            Stevebauman\Location\LocationServiceProvider::class,
+
 
 
         //
@@ -237,6 +239,8 @@ return [
         //
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
+        'Location' => Stevebauman\Location\Facades\Location::class,
+
 
         //
 
