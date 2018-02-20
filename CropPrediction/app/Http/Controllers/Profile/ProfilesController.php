@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Profile;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Auth;
 use App\Profile;
 use Illuminate\Http\Request;
 
@@ -32,7 +32,27 @@ class ProfilesController extends Controller
             $profiles = Profile::paginate($perPage);
         }
 
+      if(Auth::check() && Auth::user()->hasRole('admin')) {
         return view('frontendprofile.profiles.index', compact('profiles'));
+       }
+       else{
+         $id=Auth::id();
+           // print_r($id);die();
+             $profile = Profile::where('id', '=', $id)->first();
+            if ($profile === null) {
+               // user doesn't exist
+                 return view('frontendprofile.profiles.create');  //orig
+            }else{
+
+                 $profile = Profile::findOrFail($id);
+
+                 return view('frontendprofile.profiles.show', compact('profile'));
+
+            }
+
+       }
+
+
     }
 
     /**
@@ -42,7 +62,26 @@ class ProfilesController extends Controller
      */
     public function create()
     {
-        return view('frontendprofile.profiles.create');
+     //  return view('frontendprofile.profiles.create');  //orig
+ 
+            $id=Auth::id();
+           // print_r($id);die();
+             $profile = Profile::where('id', '=', $id)->first();
+            if ($profile === null) {
+               // user doesn't exist
+                 return view('frontendprofile.profiles.create');  //orig
+            }
+            else{
+
+                 $profile = Profile::findOrFail($id);
+
+                 return view('frontendprofile.profiles.show', compact('profile'));
+
+            }
+
+
+
+
     }
 
     /**
@@ -54,12 +93,27 @@ class ProfilesController extends Controller
      */
     public function store(Request $request)
     {
+         ////////////ORIGINAL//////////////////////
+
+        // $requestData = $request->all();
         
+        // Profile::create($requestData);
+
+        // return redirect('frontendprofile/profiles')->with('flash_message', 'Profile added!');
+ ////////////ORIGINAL//////////////////////
+        $id=Auth::id();
+    //    print_r($id);die();
         $requestData = $request->all();
-        
+        $requestData['id']= $id;
+      //  print_r($requestData);die();
         Profile::create($requestData);
 
+      //  Session::flash('flash_message', 'Profile added!');
+
         return redirect('frontendprofile/profiles')->with('flash_message', 'Profile added!');
+
+
+
     }
 
     /**

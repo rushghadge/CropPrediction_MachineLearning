@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Profile extends Model
+class Cropprediction extends Model
 {
     use SoftDeletes;
     /**
@@ -13,7 +13,7 @@ class Profile extends Model
      *
      * @var string
      */
-    protected $table = 'profiles';
+    protected $table = 'croppredictions';
 
     /**
     * The database primary key value.
@@ -27,7 +27,7 @@ class Profile extends Model
      *
      * @var array
      */
-    protected $fillable = ['id','Jilla', 'taluka', 'phone', 'address', 'state', 'country'];
+    protected $fillable = ['pH', 'Month', 'Temperature'];
 
     
 }

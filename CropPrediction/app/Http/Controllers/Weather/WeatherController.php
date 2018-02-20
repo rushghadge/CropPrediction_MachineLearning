@@ -50,34 +50,36 @@ $owm->setApiKey($myApiKey);
 
 // Example 1: Get current temperature in Berlin.
 $weather = $owm->getWeather('Thane', $units, $lang);
-echo "EXAMPLE 1 Temperature of Thane";
-echo "</br>";
+// echo "EXAMPLE 1 Temperature of Thane";
+// echo "</br>";
 
-echo " ".$weather->temperature."  ";
-echo "</br>";
+// echo " ".$weather->temperature."  ";
+// echo "</br>";
 
-echo "hi";
+//echo "hi";
 $temp= $weather->temperature;
 
 
 //$ip= \Request::ip();
-$ip='59.153.121.94';
+    $ip='59.153.121.94';
 
     //$ipaddress = $_SERVER['REMOTE_ADDR'];
-   print_r("IPADDRESS->".$ip);
+  //  print_r("IPADDRESS->".$ip);
     $data = \Location::get($ip);
     $arraydata =  (array) $data;
-    echo "</br>";
+    // echo "</br>";
 
-     print_r($arraydata);
-echo "</br>";
-echo "See YOUR latitude and longitude";
+    //   //print_r($arraydata);   // displays array content
+    //   echo "</br>";
+    //   echo "See YOUR latitude and longitude";
+    //   echo "</br>";
+    //   print_r("Latitude".$arraydata["latitude"]);
+    //   echo "</br>";
 
-      print_r("Lat".$arraydata["latitude"]);
-      print_r($arraydata["longitude"]);
+    //   print_r("Longitude".$arraydata["longitude"]);
 
-      $lat='19.169120';
-      $lon='72.966792';
+      $lat=$arraydata["latitude"];
+      $lon=$arraydata["longitude"];
 
  // $lat=$arraydata["latitude"];
  //      $lon=$arraydata["longitude"];
@@ -86,16 +88,18 @@ echo "See YOUR latitude and longitude";
 $weather = $owm->getWeather(array('lat' => $lat, 'lon' => $lon), $units, $lang);
 
 //$weather = $owm->getWeather(array($lat, $lon), $units, $lang);
-echo "$lf$lf EXAMPLE 4$lf";
+        ////echo "$lf$lf EXAMPLE 4$lf";
 
-echo 'Temperature: '.$weather->temperature;
+echo 'Temperature based on your current location: '.$weather->temperature;
 echo $lf;
 
-
+$temp=$weather->temperature;
 
 
 //return view('weather.dashboard')->with('temp', $temp);
-return view('weather.dashboard',compact($temp));
+return view('weather.dashboard')->with('temp', $temp);
+
+// return View::make('category.index')->with(compact('category'
 //return view('weather.dashboard',compact($weather));
 // Returns it as formatted string (using a method):
 echo "---3".$weather->temperature->getFormatted()."3---";

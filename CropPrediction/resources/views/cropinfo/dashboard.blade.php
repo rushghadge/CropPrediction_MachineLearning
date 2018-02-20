@@ -19,11 +19,12 @@
 
         <div class="col-md-9">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Crop InformTION</div>
 
                 <div class="panel-body">
-                    Please enter your temperature to perdict crop
-                </div>
+hellO
+{{ HTML::image('images/MHCrops.png') }}
+                </div>  
             </div>
         </div>
     </div>

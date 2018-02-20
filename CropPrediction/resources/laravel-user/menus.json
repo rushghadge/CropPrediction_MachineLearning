@@ -1,0 +1,31 @@
+{  
+   "menus":[  
+      {  
+         "section":"User Manager",
+         "items":[  
+            {  
+               "title":"User Profile",
+               "url":"\/frontendprofile\/profiles"
+            }
+         ]
+      },
+      {  
+         "section":"Crop Prediction",
+         "items":[  
+            {  
+               "title":"Predict Crop",
+               "url":"\/frontendCropprediction\/cropprediction"
+            }
+         ]
+      },
+      {  
+         "section":"Crop Information",
+         "items":[  
+            {  
+               "title":"Crops",
+               "url":"\/cropinfo\/data"
+            }
+         ]
+      }
+   ]
+}

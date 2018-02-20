@@ -38,6 +38,10 @@ Route::get('get-location-from-ip',function(){
     $ipaddress = $_SERVER['REMOTE_ADDR'];
    print_r("ADDRESS____".$ipaddress);
     $data = \Location::get('103.197.221.170');
-    print_r($data);
+  //  print_r($data);
     dd($data);
 });
+
+Route::resource('frontendCropprediction/cropprediction', 'Cropperdiction\\CroppredictionController');
+
+Route::get('cropinfo/data', 'Cropinfp\CropinfoController@index');
