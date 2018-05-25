@@ -1,0 +1,44 @@
+{  
+   "menus":[  
+      {  
+         "section":"User Manager",
+         "items":[  
+            {  
+               "title":"User Profile",
+               "url":"\/profile\/profiles"
+            }
+         ]
+      },
+      {  
+         "section":"Crop Prediction",
+         "items":[  
+            {  
+               "title":"Predict Crop",
+               "url":"\/cropprediction\/croppredictions"
+            }
+         ]
+      },
+      {  
+         "section":"Crop Information",
+         "items":[  
+            {  
+               "title":"Crops-District wise share",
+               "url":"\/cropinfo\/data"
+            },
+            {  
+               "title":"Crop Production & Yield ",
+               "url":"\/cropinfoPYield\/data"
+            },
+            {  
+               "title":"Check nearby Water Resources ",
+               "url":"\/waterresource\/front"
+            },
+            {
+                "title":"Check Government Schemes ",
+               "url":"\/governmentscheme\/data"
+
+            }
+         ]
+      }
+   ]
+}
